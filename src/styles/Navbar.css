@@ -1,0 +1,36 @@
+.Navbar {
+  background-color: darkcyan;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.Navbar .logo {
+  width: 15rem;
+  cursor: pointer;
+}
+
+.Navbar .user {
+  display: flex;
+  align-items: center;
+}
+
+.Navbar .user .logout {
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: .5rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Navbar .user .logout:hover {
+  background-color: white;
+  color: darkcyan;
+}
+
+.Navbar h3 {
+  color: white;
+  margin: 0 1rem;
+}

@@ -33,8 +33,11 @@
   margin-bottom: 1rem;
   border-style: none;
   border-radius: 5px;
-  padding: .5rem;
+  padding: .7rem;
   font-size: 1.2rem;
+  text-align: center;
+  width: 20rem;
+  border: 2px solid white;
 }
 
 .Login .form .button {
@@ -43,5 +46,14 @@
   color: white;
   font-weight: bold;
   cursor: pointer;
+  width: 12rem;
 }
 
+.Login .form .button:hover {
+  background-color: white;
+  color: #781e1d;
+}
+
+.Login .form .invalid {
+  border-color: #781e1d;
+}

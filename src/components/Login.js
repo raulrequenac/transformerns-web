@@ -37,11 +37,11 @@ const Login = () => {
         () => setStatus({ error: true, loading: false })
       )
     }
-  })
+  }, [data, error, loading, login, setUser])
 
   const errorClassName = error ? "invalid" : ""
 
-  if (success) return <Redirect to="/home"/>
+  if (success) return <Redirect to="/"/>
 
   return (
     <div className="Login">
@@ -67,7 +67,7 @@ const Login = () => {
             placeholder="Password"
           ></input>
         </label>
-        <input type="submit" value="Iniciar sesión" className="button" />
+        <input type="submit" value="Log in" className="button" />
       </form>
     </div>
   )
