@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Navbar from './Navbar'
 import TransformernsService from '../services/TransformernsService'
 import '../styles/Table.css'
+import '../styles/Leads.css'
 
 const Leads = () => {
   const { newLead, getAllLeads, convertLeadWithAccount, convertLeadNoAccount } = TransformernsService
@@ -83,7 +84,7 @@ const Leads = () => {
           onChange={handleOnChange}
           placeholder="Company name"
         />
-        <button type="submit">Add</button>
+        <button type="submit" className="btn">Add</button>
       </form>
       <table className="table">
         <th>ID</th>
