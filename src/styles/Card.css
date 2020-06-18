@@ -4,7 +4,10 @@
   border-radius: 30px;
   color: white;
   width: 45%;
-  cursor: pointer;
+  cursor: pointer; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Card:hover {

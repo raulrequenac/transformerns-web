@@ -6,19 +6,65 @@ const https = axios.create({
   headers: { 'X-Requested-With': 'XMLHttpRequest' }
 })
 
+//Authorization
+const auth = { auth: JSON.parse(localStorage.getItem('user')).config.auth }
+
+//Contacts
+const getAllContacts = () => https.get("/contacts", {}, auth)
+const getContactsBy = (data) => https.get(`/contact/find_by/${data}`, {}, auth)
+
+//Salesrep
+const newSalesRep = (data) => https.post("/salesrep/save", data, auth)
+const getAllSalesReps = () => https.get("/salesreps", {}, auth)
+
+//Accounts
+const getAllAccounts = () => https.get("/accounts", {}, auth)
+const getMedianEmployeeCount = () => https.get("/accounts/statistics/medianEmployeeCount", {}, auth)
+const getMeanEmployeeCount = () => https.get("/accounts/statistics/meanEmployeeCount", {}, auth)
+const getMaxEmployeeCount = () => https.get("/accounts/statistics/maxEmployeeCount", {}, auth)
+const getMinEmployeeCount = () => https.get("/accounts/statistics/minEmployeeCount", {}, auth)
+const getMedianOppsPerAccount = () => https.get("/accounts/statistics/medianOpsPerAccount", {}, auth)
+const getMeanOppsPerAccount = () => https.get("/accounts/statistics/meanOpportunitiesPerAccount", {}, auth)
+const getMaxOppsPerAccount = () => https.get("/accounts/statistics/maxOpportunitiesPerAccount", {}, auth)
+const getMinOppsPerAccount = () => https.get("/accounts/statistics/minOpportunitiesPerAccount", {}, auth)
+
+//Leads
+const newLead = (data) => https.post("/lead/save", data, auth)
+const getAllLeads = () => https.get("/leads", {}, auth)
+const convertLeadWithAccount = ({ leadId }) => https.get(`/lead/convert_with_account/${leadId}`, {}, auth)
+const convertLeadNoAccount = ({ leadId, accId }) => https.get(`/lead/convert_no_account/${leadId}/${accId}`, {}, auth)
+
+//Opportunities
+const getOppsBy = ({ status1, status2 }) => https.get(`/opportunity/${status1}/${status2}`, {}, auth)
+const getAllOpps = () => https.get("/opportunities", {}, auth)
+
+//Login
 const login = ({ username, password }) => https.post("/login", {}, {
   auth: {
     username: username,
     password: password
-  },
+  }
 })
 
-const opportunities = ({status1, status2 }) => https.get(`/opportunity/${status1}/${status2}`, {}, {
-  auth: JSON.parse(localStorage.getItem('user')).config.auth
-})
-
-const allOpp = () => https.get("/opportunities",  {}, {
-  auth: JSON.parse(localStorage.getItem('user')).config.auth
-})
-
-export default { login, opportunities, allOpp }
+export default {
+  getAllContacts,
+  getContactsBy,
+  newSalesRep,
+  getAllSalesReps,
+  getAllAccounts,
+  getMedianEmployeeCount,
+  getMeanEmployeeCount,
+  getMaxEmployeeCount,
+  getMinEmployeeCount,
+  getMedianOppsPerAccount,
+  getMeanOppsPerAccount,
+  getMaxOppsPerAccount,
+  getMinOppsPerAccount,
+  newLead,
+  getAllLeads,
+  convertLeadWithAccount,
+  convertLeadNoAccount,
+  getOppsBy,
+  getAllOpps,
+  login
+}

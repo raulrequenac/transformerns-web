@@ -6,26 +6,26 @@ import '../styles/Home.css'
 
 const categories = [{
     name: "SalesReps",
-    color: "#781e1d"
+  color: "#003333"
   }, {
     name: "Leads",
-    color: "#ffc107"
+    color: "#4a6b6b"
   }, {
     name: "Opportunities",
-    color: "#8ac755"
+    color: "#255454"
   }, {
     name: "Contacts",
-    color: "#9c5fde"
+    color: "#255454"
   }, {
     name: "Accounts",
-    color: "#2a5d86"
+    color: "#4a6b6b"
 }]
 
 const Home = () => {
   const {currentUser} = useContext(AuthContext)
 
   return (
-    <div className="Home">
+    <div className="Home pt-5">
       <Navbar />
       <div className="categories">
         {categories.map((category, key) =>

@@ -4,8 +4,7 @@ import Navbar from './Navbar'
 import StatusForm from './StatusForm'
 import '../styles/Opportunity.css'
 
-const Opportunity = () => {
-  
+const Opportunities = () => {
   const [success, setSuccess] = useState(false)
   const [status, setStatus] = useState({ error: false, loading: false })
   const [state, setState] = useState("all")
@@ -19,7 +18,7 @@ const Opportunity = () => {
   }
 
   useEffect(()=>{
-    if(state == "all"){
+    if(state === "all"){
       allOpp().then(oppList => setOpportunitiesList(oppList.data))
     } else {
       opportunities({status1:state,status2:"OPEN"}).then(oppList => setOpportunitiesList(oppList.data))
@@ -32,12 +31,12 @@ const Opportunity = () => {
 
   const [disabled, setDisabled] = useState(state=="all" ? "disabled" : "")
     useEffect(()=> {
-        setDisabled(state=="all" ? "disabled" : "")
+        setDisabled(state==="all" ? "disabled" : "")
     }, [state]) 
 
 
   return (
-    <div className="Opportunity">
+    <div className="Opportunity pt-5">
       <Navbar/>
       <form onSubmit={handleSubmit} className="oppForm">
         <label for="option">Choose an option:</label>
@@ -57,4 +56,4 @@ const Opportunity = () => {
   )
 }
 
-export default Opportunity
+export default Opportunities
