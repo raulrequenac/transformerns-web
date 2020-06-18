@@ -65,7 +65,7 @@ const Accounts = () => {
         <th>EMPLOYEES</th>
         <th>COUNTRY</th>
         <th>CITY</th>
-                {Object.entries(statistics)}
+        {Object.entries(statistics)}
       </table>
     </div>
   )

@@ -51,6 +51,8 @@ const Opportunities = () => {
       setDisabled(state1==="all" ? "disabled" : "")
   }, [state1]) 
 
+  console.log(opportunities.length ? Array.isArray(opportunities[0]) : opportunities)
+
 
   return (
     <div className="Opportunities pt-5">
@@ -74,7 +76,18 @@ const Opportunities = () => {
         </select>  
       <input type="submit" value="Filter" className="button" />
       </form>
-      {error ? <p>An error ocurred...</p> : opportunities.map(opps => Object.entries(opps))}
+      {error ? <p>An error ocurred...</p> : <table className="table">
+        {opportunities.length && !Array.isArray(opportunities[0]) ?
+          <thead>{Object.keys(opportunities[0]).map(k => <th>{k}</th>)}</thead> : (
+            <thead>
+              <th>Attribute</th>
+              <th>Opps</th>
+            </thead>
+          )}
+        <tbody>
+          {opportunities.map(opp => <tr>{Object.values(opp).map(v => <td>{v}</td>)}</tr>)}
+        </tbody>
+      </table>}
     </div>
   )
 }
