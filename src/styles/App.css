@@ -10,3 +10,39 @@
 .invalid {
   border-color: #781e1d;
 }
+
+.btn{
+  background-color: darkcyan; 
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+}
+
+.btn:hover{
+  background-color: #781e1d; 
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+input{
+  margin-bottom: 1rem;
+  border-style: none;
+  border-radius: 5px;
+  padding: .7rem;
+  font-size: 1.2rem;
+  text-align: center;
+  width: 20rem;
+  border: 2px solid white;
+}

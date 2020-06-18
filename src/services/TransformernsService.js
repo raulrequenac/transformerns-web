@@ -7,7 +7,8 @@ const https = axios.create({
 })
 
 //Authorization
-const auth = { auth: JSON.parse(localStorage.getItem('user')).config.auth }
+const user = JSON.parse(localStorage.getItem('user'))
+const auth = { auth: user ? user.config.auth : {} }
 
 //Contacts
 const getAllContacts = () => https.get("/contacts", {}, auth)

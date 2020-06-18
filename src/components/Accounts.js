@@ -59,7 +59,14 @@ const Accounts = () => {
       <Navbar />
       <h1>Accounts</h1>
       <p>{accounts}</p>
-      {Object.entries(statistics)}
+      <table>
+        <th>ID</th>
+        <th>INDUSTRY</th>
+        <th>EMPLOYEES</th>
+        <th>COUNTRY</th>
+        <th>CITY</th>
+                {Object.entries(statistics)}
+      </table>
     </div>
   )
 }
