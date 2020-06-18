@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Opportunity = () => {
+const Opportunities = () => {
   return (
-    <div className="Opportunity">
+    <div className="Opportunities">
 
     </div>
   )
 }
 
-export default Opportunity
+export default Opportunities

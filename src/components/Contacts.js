@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Navbar from './Navbar'
 import TransformernsService from '../services/TransformernsService'
 
-const Contact = () => {
+const Contacts = () => {
   const { getContactsBy, getAllContacts } = TransformernsService
   const [contacts, setContacts] = useState([])
   const [error, setError] = useState(false)
@@ -40,4 +40,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default Contacts

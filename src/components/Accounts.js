@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Navbar from './Navbar'
 import TransformernsService from '../services/TransformernsService'
 
-const Account = () => {
+const Accounts = () => {
   const {
     getAllAccounts,
     getMedianEmployeeCount,
@@ -55,7 +55,7 @@ const Account = () => {
   }, [getAllAccounts, getMaxEmployeeCount, getMinEmployeeCount, getMeanEmployeeCount, getMedianEmployeeCount, getMaxOppsPerAccount, getMinOppsPerAccount, getMeanOppsPerAccount, getMedianOppsPerAccount])
 
   return (
-    <div className="Account pt-5">
+    <div className="Accounts pt-5">
       <Navbar />
       <h1>Accounts</h1>
       <p>{accounts}</p>
@@ -64,4 +64,4 @@ const Account = () => {
   )
 }
 
-export default Account
+export default Accounts

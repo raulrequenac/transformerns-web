@@ -14,7 +14,8 @@ const getAllContacts = () => https.get("/contacts", {}, auth)
 const getContactsBy = (data) => https.get(`/contact/find_by/${data}`, {}, auth)
 
 //Salesrep
-const getAllSalesRep = () => https.get("/salesreps", {}, auth)
+const newSalesRep = (data) => https.post("/salesrep/save", data, auth)
+const getAllSalesReps = () => https.get("/salesreps", {}, auth)
 
 //Accounts
 const getAllAccounts = () => https.get("/accounts", {}, auth)
@@ -27,6 +28,12 @@ const getMeanOppsPerAccount = () => https.get("/accounts/statistics/meanOpportun
 const getMaxOppsPerAccount = () => https.get("/accounts/statistics/maxOpportunitiesPerAccount", {}, auth)
 const getMinOppsPerAccount = () => https.get("/accounts/statistics/minOpportunitiesPerAccount", {}, auth)
 
+//Leads
+const newLead = (data) => https.post("/lead/save", data, auth)
+const getAllLeads = () => https.get("/leads", {}, auth)
+const convertLeadWithAccount = ({ leadId }) => https.get(`/lead/convert_with_account/${leadId}`, {}, auth)
+const convertLeadNoAccount = ({ leadId, accId }) => https.get(`/lead/convert_no_account/${leadId}/${accId}`, {}, auth)
+
 //Login
 const login = ({ username, password }) => https.post("/login", {}, {
   auth: {
@@ -38,7 +45,8 @@ const login = ({ username, password }) => https.post("/login", {}, {
 export default {
   getAllContacts,
   getContactsBy,
-  getAllSalesRep,
+  newSalesRep,
+  getAllSalesReps,
   getAllAccounts,
   getMedianEmployeeCount,
   getMeanEmployeeCount,
@@ -48,5 +56,9 @@ export default {
   getMeanOppsPerAccount,
   getMaxOppsPerAccount,
   getMinOppsPerAccount,
+  newLead,
+  getAllLeads,
+  convertLeadWithAccount,
+  convertLeadNoAccount,
   login
 }
