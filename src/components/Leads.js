@@ -85,10 +85,10 @@ const Leads = () => {
         <button type="submit">Add</button>
       </form>
 
-      {leads.map(lead => (
-        <div>
+      {leads.map((lead, key) => (
+        <div key={key}>
           <p>{Object.entries(lead)}</p>
-          <div>Convert</div>
+          <button>Convert</button>
         </div>
       ))}
     </div>

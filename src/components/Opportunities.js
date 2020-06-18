@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import TransformernsService from '../services/TransformernsService'
 import Navbar from './Navbar'
 import '../styles/Opportunities.css'
