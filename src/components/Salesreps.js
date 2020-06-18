@@ -7,20 +7,21 @@ const Salesreps = () => {
   const { newSalesRep, getAllSalesReps } = TransformernsService
   const [salesreps, setSalesReps] = useState([])
   const [findError, setFindError] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const [success, setSuccess] = useState(true)
   const [status, setStatus] = useState({ error: false, loading: false })
   const {error, loading} = status
   const [name, setName] = useState("")
   
   useEffect(() => {
-    getAllSalesReps()
-      .then(
-        (salesrepList) => {
-          setSalesReps(salesrepList.data)
-          setSuccess(false)
-        },
-        () => setFindError(true)
-      )
+    if (success) 
+      getAllSalesReps()
+        .then(
+          (salesrepList) => {
+            setSalesReps(salesrepList.data)
+            setSuccess(false)
+          },
+          () => setFindError(true)
+        )
   }, [getAllSalesReps, success])
 
   const handleOnChange = (e) => setName(e.target.value)
@@ -31,7 +32,7 @@ const Salesreps = () => {
   }
 
   useEffect(() => {
-    if (loading && !error) {
+    if (loading && !error)
       newSalesRep({ name })
         .then(
           (salesrep) => {
@@ -40,7 +41,6 @@ const Salesreps = () => {
           },
           () => setStatus({error: true, loading: false})
       )
-    }
   }, [error, loading, newSalesRep, name])
 
   const errorClassName = error ? "invalid" : ""

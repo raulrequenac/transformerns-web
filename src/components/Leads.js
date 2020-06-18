@@ -1,22 +1,43 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
+import {Redirect} from 'react-router-dom'
 import Navbar from './Navbar'
 import TransformernsService from '../services/TransformernsService'
 import '../styles/Table.css'
 import '../styles/Leads.css'
 
 const Leads = () => {
-  const { newLead, getAllLeads, convertLeadWithAccount, convertLeadNoAccount } = TransformernsService
+  const { newLead, getAllLeads } = TransformernsService
   const [leads, setLeads] = useState([])
-  const [error, setError] = useState(false)
-  const [data, setData] = useState({ salesRepId: '', id: '', phoneNumber: '', email: '', companyName: ''})
+  const [findError, setFindError] = useState(false)
+  const [data, setData] = useState({ salesRepId: '', id: '', phoneNumber: '', email: '', companyName: '' })
+  const [convert, setConvert] = useState({ redirect: false, id: 0 })
+  const [success, setSuccess] = useState(true)
+  const [status, setStatus] = useState({ error: false, loading: false })
+  const {error, loading} = status
 
   useEffect(() => {
-    getAllLeads()
-      .then(
-        (leadList) => setLeads(leadList.data),
-        () => setError(true)
-      )
-  }, [getAllLeads])
+    if (success)
+      getAllLeads()
+        .then(
+          (leadList) => {
+            setLeads(leadList.data)
+            setSuccess(false)
+          },
+          () => setFindError(true)
+        )
+  }, [getAllLeads, success])
+
+  useEffect(() => {
+    if (loading && !error)
+      newLead(data)
+        .then(
+          (leads) => {
+            setStatus({ error: false, loading: false })
+            setSuccess(true)
+          },
+          () => setStatus({error: true, loading: false})
+        )
+  }, [data, error, loading, newLead])
 
   const handleOnChange = (e) => {
     const {name, value} = e.target
@@ -27,80 +48,62 @@ const Leads = () => {
     })
   }
 
+  const onClickConvert = (id) => setConvert({redirect: true, id})
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    setStatus({error: false, loading: true})
   }
+
+  const errorClassName = error ? "invalid" : ""
+  const input = (value, name) => (
+    <input
+      className={errorClassName}
+      type="text"
+      name={value}
+      value={data[value]}
+      onChange={handleOnChange}
+      placeholder={name}
+    />
+  )
+
+  if (convert.redirect) return <Redirect to={`/convert/${convert.id}`} />
 
   return (
     <div className="Leads pt-5">
       <Navbar/>
       <h1>Leads</h1>
       <form onSubmit={handleSubmit}>
-        <input 
-          className=""
-          type="text"
-          name="salesRepId"
-          value={data.salesRepId}
-          onChange={handleOnChange}
-          placeholder="SalesRep Id"
-        />
-        <input
-          className=""
-          type="text"
-          name="id"
-          value={data.id}
-          onChange={handleOnChange}
-          placeholder="Id"
-        />
-        <input
-          className=""
-          type="text"
-          name="name"
-          value={data.name}
-          onChange={handleOnChange}
-          placeholder="Name"
-        />
-        <input 
-          className=""
-          type="text"
-          name="phoneNumber"
-          value={data.phoneNumber}
-          onChange={handleOnChange}
-          placeholder="Phone number"
-        />
-        <input 
-          className=""
-          type="text"
-          name="email"
-          value={data.email}
-          onChange={handleOnChange}
-          placeholder="Email"
-        />
-        <input
-          className=""
-          type="text"
-          name="companyName"
-          value={data.companyName}
-          onChange={handleOnChange}
-          placeholder="Company name"
-        />
+        {input("salesRepId", "SalesRep Id")}
+        {input("id", "Id")}
+        {input("name", "Name")}
+        {input("phoneNumber", "Phone number")}
+        {input("email", "Email")}
+        {input("companyName", "Company name")}
         <button type="submit" className="btn">Add</button>
       </form>
-      <table className="table">
-        <th>ID</th>
-        <th>NAME</th>
-        <th>PHONE NUMBER</th>
-        <th>COMPANY NAME</th>
-        {leads.map(lead => (
-          <tr>
-            <td>{lead.id}</td>
-            <td>{lead.name}</td>
-            <td>{lead.phoneNumber}</td>
-            <td>{lead.companyName}</td>
-            <td><button>Convert</button></td>
-          </tr>
-        ))}
-      </table>
+      {findError ? <p>An error ocurred...</p> : (
+        <table className="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>NAME</th>
+              <th>PHONE NUMBER</th>
+              <th>COMPANY NAME</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leads.map((lead, key) => (
+              <tr key={key}>
+                <td>{lead.id}<button className="btn" onClick={() => onClickConvert(lead.id)}>Convert</button></td>
+                <td>{lead.name}</td>
+                <td>{lead.phoneNumber}</td>
+                <td>{lead.companyName}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   )
 }

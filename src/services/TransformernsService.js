@@ -32,8 +32,8 @@ const getMinOppsPerAccount = () => https.get("/accounts/statistics/minOpportunit
 //Leads
 const newLead = (data) => https.post("/lead/save", data, auth)
 const getAllLeads = () => https.get("/leads", {}, auth)
-const convertLeadWithAccount = ({ leadId }) => https.get(`/lead/convert_with_account/${leadId}`, {}, auth)
-const convertLeadNoAccount = ({ leadId, accId }) => https.get(`/lead/convert_no_account/${leadId}/${accId}`, {}, auth)
+const convertLeadWithAccount = (leadId, oppAcc) => https.post(`/lead/convert_with_account/${leadId}`, oppAcc, auth)
+const convertLeadNoAccount = (leadId, accId, opp) => https.post(`/lead/convert_no_account/${leadId}/${accId}`, opp, auth)
 
 //Opportunities
 const getOppsBy = ({ state1 }) => https.get(`/opportunities/${state1}`, {}, auth)
