@@ -47,7 +47,7 @@ const Accounts = () => {
           maxEmployeeCount: maxEC.data,
           minEmployeeCount: minEC.data,
           medianOppsPerAccount: medianOPA.data,
-          meanOppsperAccount: meanOPA.data,
+          meanOppsPerAccount: meanOPA.data,
           maxOppsPerAccount: maxOPA.data,
           minOppsPerAccount: minOPA.data
         })

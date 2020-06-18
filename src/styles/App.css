@@ -51,13 +51,13 @@ input {
   background-color: darkcyan; 
   border: none;
   color: white;
-  padding: 10px 25px;
+  padding: 7px 25px;
   border-radius: 5px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
-  margin: 5px 8px;
+  margin-left: 1rem;
 }
 
 .smallBtn:hover {
@@ -102,10 +102,6 @@ select:after{
   width:8rem; 
   background-color: #d3ffff;
   border-radius: 5px;
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .cardCont {

@@ -54,7 +54,8 @@ const Opportunities = () => {
 
   return (
     <div className="Opportunities pt-5">
-      <Navbar/>
+      <Navbar />
+      <h1>Opportunities</h1>
       <form onSubmit={handleSubmit} className="oppForm">
        <h1>FIND</h1>
         <select id="option" onChange={handleOnChange} defaultValue="all" name="state1">
@@ -74,7 +75,18 @@ const Opportunities = () => {
         </select>  
       <input type="submit" value="Filter" className="button" />
       </form>
-      {error ? <p>An error ocurred...</p> : opportunities.map(opps => Object.entries(opps))}
+      {error ? <p>An error ocurred...</p> : <table className="table">
+        {opportunities.length && !Array.isArray(opportunities[0]) ?
+          <thead>{Object.keys(opportunities[0]).map(k => <th>{k}</th>)}</thead> : (
+            <thead>
+              <th>Attribute</th>
+              <th>Opps</th>
+            </thead>
+          )}
+        <tbody>
+          {opportunities.map(opp => <tr>{Object.values(opp).map(v => <td>{v}</td>)}</tr>)}
+        </tbody>
+      </table>}
     </div>
   )
 }

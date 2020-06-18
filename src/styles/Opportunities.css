@@ -1,11 +1,15 @@
 .Opportunities {
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .oppForm {
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 50%;
+    width: 80%;
 }
 
 .oppForm label {

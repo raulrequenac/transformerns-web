@@ -95,7 +95,7 @@ const Leads = () => {
           <tbody>
             {leads.map((lead, key) => (
               <tr key={key}>
-                <td>{lead.id}<button className="btn" onClick={() => onClickConvert(lead.id)}>Convert</button></td>
+                <td>{lead.id}<button className="smallBtn" onClick={() => onClickConvert(lead.id)}>Convert</button></td>
                 <td>{lead.name}</td>
                 <td>{lead.phoneNumber}</td>
                 <td>{lead.companyName}</td>
