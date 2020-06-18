@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Redirect, useParams } from 'react-router-dom'
 import Navbar from './Navbar'
 import TransformernsService from '../services/TransformernsService'
+import '../styles/Convert.css'
 
 const productsENUM = ["HYBRID", "FLATBED", "BOX"]
 const statusENUM = ["OPEN", "CLOSED_WON", "CLOSED_LOST"]
@@ -65,6 +66,7 @@ const Convert = () => {
   return (
     <div className="Convert pt-5">
       <Navbar />
+      <h1>Convert to Opportunity</h1>
       <form onSubmit={handleSubmit}>
         <select>
           {productsENUM.map((p, key) => (<option value={p} key={key}>{p}</option>))}
@@ -79,25 +81,27 @@ const Convert = () => {
           onChange={handleOnChangeOpp}
           placeholder="Quantity"
         />
-        <p>Create Account?</p><input type="checkbox" onClick={toggleNewAccount}/>
+        <div>
+        <label>Create Account?</label><input id="check" type="checkbox" onClick={toggleNewAccount}/>
+        </div>
         {newAccount ? (
           <div>
             <input
-              className=""
+              className="param"
               type="number"
               name="employeeCount"
               onChange={handleOnChangeAcc}
               placeholder="Employee count"
             />
             <input
-              className=""
+              className="param"
               type="text"
               name="city"
               onChange={handleOnChangeAcc}
               placeholder="City"
             />
             <input
-              className=""
+              className="param"
               type="text"
               name="country"
               onChange={handleOnChangeAcc}

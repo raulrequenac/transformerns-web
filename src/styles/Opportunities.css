@@ -1,11 +1,15 @@
 .Opportunities {
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .oppForm {
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 50%;
+    width: 80%;
 }
 
 .oppForm label {
@@ -24,6 +28,10 @@
     border: 2px solid white;
 }
 
+.oppForm h1{
+    color: darkcyan;
+}
+
 .oppForm .button {
     border: 3px solid darkcyan;
     background-color: transparent;
@@ -31,6 +39,7 @@
     font-weight: bold;
     cursor: pointer;
     width: 17rem;
+    margin-top: 14px
 }
 
 .oppForm .button:hover {
