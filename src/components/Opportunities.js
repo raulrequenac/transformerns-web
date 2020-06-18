@@ -56,7 +56,7 @@ const Opportunities = () => {
     <div className="Opportunities pt-5">
       <Navbar/>
       <form onSubmit={handleSubmit} className="oppForm">
-       <h1>Find</h1>
+       <h1>FIND</h1>
         <select id="option" onChange={handleOnChange} defaultValue="all" name="state1">
           <option value="all">All</option>
           <option value="salesRep">Sales Rep</option>
@@ -65,7 +65,7 @@ const Opportunities = () => {
           <option value="city">City</option>
           <option value="industry">Industry</option>
         </select>
-        <h1>by</h1>
+        <h1>BY</h1>
         <select id="status" onChange={handleOnChange} defaultValue="all" name="state2">
           <option value="all">All</option>
           <option value="OPEN" disabled={disabled}>OPEN</option>
