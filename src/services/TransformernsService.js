@@ -34,6 +34,10 @@ const getAllLeads = () => https.get("/leads", {}, auth)
 const convertLeadWithAccount = ({ leadId }) => https.get(`/lead/convert_with_account/${leadId}`, {}, auth)
 const convertLeadNoAccount = ({ leadId, accId }) => https.get(`/lead/convert_no_account/${leadId}/${accId}`, {}, auth)
 
+//Opportunities
+const getOppsBy = ({ status1, status2 }) => https.get(`/opportunity/${status1}/${status2}`, {}, auth)
+const getAllOpps = () => https.get("/opportunities", {}, auth)
+
 //Login
 const login = ({ username, password }) => https.post("/login", {}, {
   auth: {
@@ -60,5 +64,7 @@ export default {
   getAllLeads,
   convertLeadWithAccount,
   convertLeadNoAccount,
+  getOppsBy,
+  getAllOpps,
   login
 }
