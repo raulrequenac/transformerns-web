@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import TransformernsService from '../services/TransformernsService'
+import '../styles/Salesrep.css'
 
 const Salesreps = () => {
   const { newSalesRep, getAllSalesReps } = TransformernsService
@@ -56,9 +57,18 @@ const Salesreps = () => {
           placeholder="New SalesRep name"
           className={errorClassName}
         />
-        <button type="submit">Add</button>
+        <button type="submit"className="btn">Add</button>
       </form>
-      {findError ? <p>An error ocurred...</p> : salesreps.map(s => s.name)}
+      <table className="table">
+          <th>ID</th>
+          <th>NAME</th>
+      {findError ? <p>An error ocurred...</p> : salesreps.map(s => 
+          <tr>
+            <td>{s.id}</td>
+            <td>{s.name}</td>
+          </tr>
+        )}
+      </table>
     </div>
   )
 }

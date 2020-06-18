@@ -1,0 +1,18 @@
+.table{
+    width: 85%;
+    margin: 0 auto;
+}
+
+.table th{
+    background-color: darkcyan;
+    color:white;
+    padding: 7px 0;
+}
+
+.table tr td{
+    padding:5px 0;
+}
+
+.table tr:nth-child(odd){
+    background-color: #d3ffff;
+}

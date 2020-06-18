@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Navbar from './Navbar'
 import TransformernsService from '../services/TransformernsService'
+import '../styles/Table.css'
 
 const Leads = () => {
   const { newLead, getAllLeads, convertLeadWithAccount, convertLeadNoAccount } = TransformernsService
@@ -84,13 +85,21 @@ const Leads = () => {
         />
         <button type="submit">Add</button>
       </form>
-
-      {leads.map((lead, key) => (
-        <div key={key}>
-          <p>{Object.entries(lead)}</p>
-          <button>Convert</button>
-        </div>
-      ))}
+      <table className="table">
+        <th>ID</th>
+        <th>NAME</th>
+        <th>PHONE NUMBER</th>
+        <th>COMPANY NAME</th>
+        {leads.map(lead => (
+          <tr>
+            <td>{lead.id}</td>
+            <td>{lead.name}</td>
+            <td>{lead.phoneNumber}</td>
+            <td>{lead.companyName}</td>
+            <td><button>Convert</button></td>
+          </tr>
+        ))}
+      </table>
     </div>
   )
 }
