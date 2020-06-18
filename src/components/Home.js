@@ -29,7 +29,7 @@ const Home = () => {
       <Navbar />
       <div className="categories">
         {categories.map((category, key) =>
-          category.name === 'SalesReps' && currentUser.data.username !== 'admin' ?
+          category.name === 'SalesReps' && currentUser.data && currentUser.data.username !== 'admin' ?
             <></> :
             <Card key={key} category={category} />
             )}
