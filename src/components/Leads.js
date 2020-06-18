@@ -3,6 +3,7 @@ import {Redirect} from 'react-router-dom'
 import Navbar from './Navbar'
 import TransformernsService from '../services/TransformernsService'
 import '../styles/Table.css'
+import '../styles/Leads.css'
 
 const Leads = () => {
   const { newLead, getAllLeads } = TransformernsService
@@ -79,7 +80,7 @@ const Leads = () => {
         {input("phoneNumber", "Phone number")}
         {input("email", "Email")}
         {input("companyName", "Company name")}
-        <button type="submit">Add</button>
+        <button type="submit" className="btn">Add</button>
       </form>
       {findError ? <p>An error ocurred...</p> : (
         <table className="table">
