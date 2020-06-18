@@ -7,7 +7,8 @@ const https = axios.create({
 })
 
 //Authorization
-const auth = { auth: JSON.parse(localStorage.getItem('user')).config.auth }
+const user = JSON.parse(localStorage.getItem('user'))
+const auth = { auth: user ? user.config.auth : {} }
 
 //Contacts
 const getAllContacts = () => https.get("/contacts", {}, auth)
@@ -35,7 +36,8 @@ const convertLeadWithAccount = ({ leadId }) => https.get(`/lead/convert_with_acc
 const convertLeadNoAccount = ({ leadId, accId }) => https.get(`/lead/convert_no_account/${leadId}/${accId}`, {}, auth)
 
 //Opportunities
-const getOppsBy = ({ status1, status2 }) => https.get(`/opportunity/${status1}/${status2}`, {}, auth)
+const getOppsBy = ({ state1 }) => https.get(`/opportunities/${state1}`, {}, auth)
+const getOppsBy2 = ({ state1, state2 }) => https.get(`/opportunities/${state1}/${state2}`, {}, auth)
 const getAllOpps = () => https.get("/opportunities", {}, auth)
 
 //Login
@@ -65,6 +67,7 @@ export default {
   convertLeadWithAccount,
   convertLeadNoAccount,
   getOppsBy,
+  getOppsBy2,
   getAllOpps,
   login
 }

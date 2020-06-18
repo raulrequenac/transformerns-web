@@ -10,3 +10,14 @@
 .invalid {
   border-color: #781e1d;
 }
+
+input {
+  margin-bottom: 1rem;
+  border-style: none;
+  border-radius: 5px;
+  padding: .7rem;
+  font-size: 1.2rem;
+  text-align: center;
+  width: 20rem;
+  border: 2px solid white;
+}
