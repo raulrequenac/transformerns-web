@@ -30,9 +30,9 @@ const Login = () => {
     if (loading && !error) {
       login(data).then(
         (user) => {
-          setSuccess(true)
-          setStatus({ error: false, loading: true })
+          setStatus({ error: false, loading: false })
           setUser(user)
+          setSuccess(true)
         },
         () => setStatus({ error: true, loading: false })
       )

@@ -13,7 +13,7 @@ const Card = ({ category }) => {
     <div
       className="Card"
       onClick={onClickRedirect}
-      style={{ backgroundColor: category.color, width: category.name === "SalesRep" ? "100%" : "49%" }}
+      style={{ backgroundColor: category.color, width: category.name === "SalesReps" ? "100%" : "49%" }}
     >
       <h1>{category.name}</h1>
     </div>
