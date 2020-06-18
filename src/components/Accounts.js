@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import TransformernsService from '../services/TransformernsService'
 
@@ -40,7 +40,7 @@ const Accounts = () => {
 
     Promise.all([getAllAccountsPromise, getMedianEmployeeCountPromise, getMeanEmployeeCountPromise, getMaxEmployeeCountPromise, getMinEmployeeCountPromise, getMedianOppsPerAccountPromise, getMeanOppsPerAccountPromise, getMaxOppsPerAccountPromise, getMinOppsPerAccountPromise])
       .then(([accountList, medianEC, meanEC, maxEC, minEC, medianOPA, meanOPA, maxOPA, minOPA]) => {
-        setAccounts(accountList.data.map(a => Object.entries(a)))
+        setAccounts(accountList.data)
         setStatistics({
           medianEmployeeCount: medianEC.data,
           meanEmployeeCount: meanEC.data,
@@ -58,14 +58,56 @@ const Accounts = () => {
     <div className="Accounts pt-5">
       <Navbar />
       <h1>Accounts</h1>
-      <p>{accounts}</p>
-      <table>
+
+      <div className = "cardCont">
+        <div className="card">
+          <h4><b>Max Employee Count</b></h4>
+          <p>{statistics.maxEmployeeCount}</p>
+        </div>
+        <div className="card">
+          <h4><b>Min Employee Count</b></h4>
+          <p>{statistics.minEmployeeCount}</p>
+        </div>
+        <div className="card">
+          <h4><b>Mean Employee Count</b></h4>
+          <p>{statistics.meanEmployeeCount}</p>
+        </div>
+        <div className="card">
+          <h4><b>Median Employee Count</b></h4>
+          <p>{statistics.medianEmployeeCount}</p>
+        </div>
+        <div className="card">
+          <h4><b>Max Opps Per Account</b></h4>
+          <p>{statistics.maxOppsPerAccount}</p>
+        </div>
+        <div className="card">
+          <h4><b>Min Opps Per Account</b></h4>
+          <p>{statistics.minOppsPerAccount}</p>
+        </div>
+        <div className="card">
+          <h4><b>Mean Opps Per Account</b></h4>
+          <p>{statistics.meanOppsPerAccount}</p>
+        </div>
+        <div className="card">
+          <h4><b>Median Opps Per Account</b></h4>
+          <p>{statistics.medianOppsPerAccount}</p>
+        </div>
+      </div>
+      <table className="table">
         <th>ID</th>
         <th>INDUSTRY</th>
         <th>EMPLOYEES</th>
         <th>COUNTRY</th>
         <th>CITY</th>
-                {Object.entries(statistics)}
+        {accounts.map(a =>
+          <tr>
+            <td>{a.id}</td>
+            <td>{a.industry}</td>
+            <td>{a.employeeCount}</td>
+            <td>{a.country}</td>
+            <td>{a.city}</td>
+          </tr>
+        )}
       </table>
     </div>
   )

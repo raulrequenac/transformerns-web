@@ -96,3 +96,30 @@ select:after{
   border-left: 1px solid #3C1C78;
   z-index: -1;
 }
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  width:8rem; 
+  background-color: #d3ffff;
+  border-radius: 5px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.cardCont {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  margin: 25px auto;
+}
+
+.card p{
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+.card h4{
+  color: darkcyan;
+}
