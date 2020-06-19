@@ -51,7 +51,6 @@ const Opportunities = () => {
       setDisabled(state1==="all" ? "disabled" : "")
   }, [state1]) 
 
-
   return (
     <div className="Opportunities pt-5">
       <Navbar />

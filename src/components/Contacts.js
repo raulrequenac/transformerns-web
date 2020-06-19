@@ -25,8 +25,6 @@ const Contacts = () => {
 
   const handleOnChange = (e) => setAttribute(e.target.value)
 
-  console.log(contacts)
-
   return (
     <div className="Contacts pt-5">
       <Navbar />

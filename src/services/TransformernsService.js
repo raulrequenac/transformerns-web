@@ -30,7 +30,7 @@ const getMaxOppsPerAccount = () => https.get("/accounts/statistics/maxOpportunit
 const getMinOppsPerAccount = () => https.get("/accounts/statistics/minOpportunitiesPerAccount", {}, auth)
 
 //Leads
-const newLead = (data) => https.post("/lead/save", data, auth)
+const newLead = (salesRepId, data) => https.post(`/lead/save/${salesRepId}`, data, auth)
 const getAllLeads = () => https.get("/leads", {}, auth)
 const convertLeadWithAccount = (leadId, oppAcc) => https.post(`/lead/convert_with_account/${leadId}`, oppAcc, auth)
 const convertLeadNoAccount = (leadId, accId, opp) => https.post(`/lead/convert_no_account/${leadId}/${accId}`, opp, auth)

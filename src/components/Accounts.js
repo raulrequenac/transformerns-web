@@ -70,7 +70,7 @@ const Accounts = () => {
         </div>
         <div className="card">
           <h4><b>Mean Employee Count</b></h4>
-          <p>{statistics.meanEmployeeCount}</p>
+          <p>{Math.round(statistics.meanEmployeeCount * 100) / 100}</p>
         </div>
         <div className="card">
           <h4><b>Median Employee Count</b></h4>
@@ -86,7 +86,7 @@ const Accounts = () => {
         </div>
         <div className="card">
           <h4><b>Mean Opps Per Account</b></h4>
-          <p>{statistics.meanOppsPerAccount}</p>
+          <p>{Math.round(statistics.meanOppsPerAccount * 100) / 100}</p>
         </div>
         <div className="card">
           <h4><b>Median Opps Per Account</b></h4>

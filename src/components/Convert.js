@@ -5,13 +5,12 @@ import TransformernsService from '../services/TransformernsService'
 import '../styles/Convert.css'
 
 const productsENUM = ["HYBRID", "FLATBED", "BOX"]
-const statusENUM = ["OPEN", "CLOSED_WON", "CLOSED_LOST"]
 const industryENUM = ["PRODUCE", "ECOMMERCE", "MANUFACTURING", "MEDICAL", "OTHER"]
 
 const Convert = () => {
   const { id } = useParams()
   const { convertLeadWithAccount, convertLeadNoAccount } = TransformernsService
-  const [opp, setOpp] = useState({ product: productsENUM[0], status: statusENUM[0], quantity: -1 })
+  const [opp, setOpp] = useState({ product: productsENUM[0], quantity: -1 })
   const [acc, setAcc] = useState({employeeCount: -1, city: '', country: '', industry: industryENUM[0]})
   const [newAccount, setNewAccount] = useState(false)
   const [accountId, setAccountId] = useState(0)
@@ -70,9 +69,6 @@ const Convert = () => {
       <form onSubmit={handleSubmit}>
         <select>
           {productsENUM.map((p, key) => (<option value={p} key={key}>{p}</option>))}
-        </select>
-        <select>
-          {statusENUM.map((s, key) => (<option value={s} key={key}>{s}</option>))}
         </select>
         <input
           className=""

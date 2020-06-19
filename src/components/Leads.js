@@ -9,7 +9,8 @@ const Leads = () => {
   const { newLead, getAllLeads } = TransformernsService
   const [leads, setLeads] = useState([])
   const [findError, setFindError] = useState(false)
-  const [data, setData] = useState({ salesRepId: '', id: '', phoneNumber: '', email: '', companyName: '' })
+  const [data, setData] = useState({ salesRepId: '', name: '', phoneNumber: '', email: '', companyName: '' })
+  const {salesRepId,name, phoneNumber, email, companyName} = data
   const [convert, setConvert] = useState({ redirect: false, id: 0 })
   const [success, setSuccess] = useState(true)
   const [status, setStatus] = useState({ error: false, loading: false })
@@ -29,7 +30,7 @@ const Leads = () => {
 
   useEffect(() => {
     if (loading && !error)
-      newLead(data)
+      newLead(salesRepId, {name, phoneNumber, email, companyName})
         .then(
           (leads) => {
             setStatus({ error: false, loading: false })
@@ -37,7 +38,7 @@ const Leads = () => {
           },
           () => setStatus({error: true, loading: false})
         )
-  }, [data, error, loading, newLead])
+  }, [data, error, loading, newLead, companyName, email, phoneNumber, salesRepId])
 
   const handleOnChange = (e) => {
     const {name, value} = e.target
@@ -75,7 +76,6 @@ const Leads = () => {
       <h1>Leads</h1>
       <form onSubmit={handleSubmit}>
         {input("salesRepId", "SalesRep Id")}
-        {input("id", "Id")}
         {input("name", "Name")}
         {input("phoneNumber", "Phone number")}
         {input("email", "Email")}
